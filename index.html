@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<section class="section1">
+    <div class="nav">
+        <div class="pom1">
+            <i class="pom fa-solid fa-circle-check"></i>
+            <a href="#" class="pom">Pomofocus</a>
+    
+        </div>
+        <div>
+            <button class="bir"><i class="  fa-solid fa-square-poll-vertical"></i>    Report</button>
+            <button class="bir1 bir"><i class="fa-solid fa-gear"></i>   Setting</button>
+            <button class="bir"><i class="fa-solid fa-circle-user"></i>    Login</button>
+            
+        </div>
+    
+    </div>
+
+    <div class="hr"></div>
+    <div class="time">
+        <div class="button">
+            <button class="btn rem" id="red">Pomodoro</button>
+            <button class="btn rem" id="blue">Short Break</button>
+            <button class="btn rem" id="green">Long Break</button>
+        </div>
+        <span><span id="minute">25</span>:<span id="second">00</span></span>
+        <button class="start">START</button>
+    </div>
+    <div class="setting hidden">
+        <div class="set"><h1>Timer Settings</h1><button id="esc"><i class="icon fa-brands fa-square-x-twitter"></i></button></div>
+        <p class="p">Time (minutes)</p>
+        <div class="d">
+            <div class="f">
+                <label for="pomodoro">Pomodoro</label>
+            <input type="number" id="pomodoro">
+            </div>
+            <div class="f">
+                <label for="short">Short Break</label>
+            <input type="number" id="short">
+            </div>
+            <div class="f">
+                <label for="long">Long Break</label>
+            <input type="number" id="long">
+            </div>
+        </div>
+        <div class="check">
+            <label for="check">Auto start breaks</label>
+            <input type="checkbox"  id="check">
+        </div>
+        <div class="check">
+            <label for="check">Auto start Pomodoros?</label>
+            <input type="checkbox"  id="check">
+        </div>
+        <div class="check1">
+            <label for="check" class="b">Long Break interval</label>
+            <input type="number" class="a" id="check">
+        </div>
+        <div class="birnarsa">
+            <label for="duration">Select Timer Duration:</label>
+    <select>
+    <option value="duration">Duration</option>
+    <option value='bell'>Bell</option>
+    </select>
+        </div>
+        <button id="ok">OK</button>
+    </div>
+</section>
+
+    <script src="./script.js"></script>
+</body>
+</html>
