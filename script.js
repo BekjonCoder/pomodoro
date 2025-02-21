@@ -89,6 +89,7 @@ okButton.addEventListener('click', () => {
     blue.addEventListener('click', () => setTime(shortBreakTime, '#1997cd'));
     green.addEventListener('click', () => setTime(longBreakTime, '#2b904b'));
 
-    settingMenu.classList.add('hidden'); 
+    setting.classList.add('hidden'); 
+    start.classList.remove('hidden'); 
 });
 
