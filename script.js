@@ -1,95 +1,154 @@
-const red = document.getElementById('red');
-const blue = document.getElementById('blue');
-const green = document.getElementById('green');
-const body = document.body;
-const minutes = document.getElementById('minute');
-const seconds = document.getElementById('second');
-const start = document.querySelector('.start');
-const settingButton = document.querySelector('.bir1');
-const setting = document.querySelector('.setting'); 
-const closeButton = document.getElementById('esc'); 
-const okButton = document.getElementById('ok'); 
-const pomodoroInput = document.getElementById('pomodoro');
-const shortBreakInput = document.getElementById('short');
-const longBreakInput = document.getElementById('long');
+document.addEventListener("DOMContentLoaded", () => {
+    const minuteDisplay = document.getElementById("minute");
+    const secondDisplay = document.getElementById("second");
+    const startButton = document.querySelector(".start");
+    const buttons = document.querySelectorAll(".rem");
+    const settingsButton = document.querySelector(".bir1");
+    const settingsPanel = document.querySelector(".setting");
+    const escButton = document.getElementById("esc");
+    const okButton = document.getElementById("ok");
+    const body = document.body;
+    const colorInputs = document.querySelectorAll("input[name='color']");
 
-let timeLeft = 25 * 60; 
-let countdown;
-let running = false;
-let defaultTime = 25 * 60;
+    let time = 25 * 60;
+    let timer;
+    let isRunning = false;
+    let currentColor = "#d94d4d"; // Default rang (qizil)
 
+    // Ovozlar
+    const startSound = new Audio("start.mp3"); // START tugmasi bosilganda
+    const endSound = new Audio("end.mp3"); // Vaqt tugaganda
 
-settingButton.addEventListener('click', () => {
-    setting.classList.remove('hidden');
-    start.classList.add('hidden');
+    function updateDisplay() {
+        let minutes = Math.floor(time / 60);
+        let seconds = time % 60;
+        minuteDisplay.textContent = minutes.toString().padStart(2, "0");
+        secondDisplay.textContent = seconds.toString().padStart(2, "0");
+    }
+
+    function startTimer() {
+        if (!isRunning) {
+            isRunning = true;
+            startButton.textContent = "STOP";
+            startSound.play(); // START bosilganda ovoz chiqadi
+
+            timer = setInterval(() => {
+                if (time > 0) {
+                    time--;
+                    updateDisplay();
+                } else {
+                    clearInterval(timer);
+                    isRunning = false;
+                    startButton.textContent = "START";
+                    endSound.play(); // Vaqt tugaganda ovoz chiqadi
+                }
+            }, 1000);
+        } else {
+            clearInterval(timer);
+            isRunning = false;
+            startButton.textContent = "START";
+        }
+    }
+
+    function changeMode(mode) {
+        clearInterval(timer);
+        isRunning = false;
+        startButton.textContent = "START";
+
+        if (mode === "pomodoro") {
+            time = 25 * 60;
+            currentColor = "#d94d4d"; // Qizil
+        } else if (mode === "short") {
+            time = 5 * 60;
+            currentColor = "#4d79d9"; // Ko'k
+        } else if (mode === "long") {
+            time = 15 * 60;
+            currentColor = "#4dd98b"; // Yashil
+        }
+
+        body.style.transition = "background-color 1s ease"; // Silliq o‘zgarish
+        body.style.backgroundColor = currentColor;
+        updateDisplay();
+    }
+
+    function applySettings() {
+        let pomodoroTime = document.getElementById("pomodoro").value;
+        let shortBreak = document.getElementById("short").value;
+        let longBreak = document.getElementById("long").value;
+
+        if (pomodoroTime) time = pomodoroTime * 60;
+        if (shortBreak && buttons[1].classList.contains("active")) time = shortBreak * 60;
+        if (longBreak && buttons[2].classList.contains("active")) time = longBreak * 60;
+
+        colorInputs.forEach(input => {
+            if (input.checked) {
+                currentColor = input.getAttribute("data-color") === "red" ? "#d94d4d" :
+                               input.getAttribute("data-color") === "blue" ? "#4d79d9" :
+                               "#4dd98b"; // Green
+            }
+        });
+
+        body.style.transition = "background-color 1s ease";
+        body.style.backgroundColor = currentColor;
+        updateDisplay();
+        settingsPanel.classList.add("hidden");
+    }
+
+    startButton.addEventListener("click", startTimer);
+
+    buttons.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+            if (e.target.id === "red") {
+                changeMode("pomodoro");
+            } else if (e.target.id === "blue") {
+                changeMode("short");
+            } else if (e.target.id === "green") {
+                changeMode("long");
+            }
+        });
+    });
+
+    settingsButton.addEventListener("click", () => {
+        settingsPanel.classList.toggle("hidden");
+        startButton.classList.toggle('hidden');
+    });
+
+    escButton.addEventListener("click", () => {
+        settingsPanel.classList.add("hidden");
+        startButton.classList.remove('hidden');
+    });
+
+    okButton.addEventListener("click", () => {
+        applySettings();
+        startButton.classList.remove("hidden");
+    });
+
+    updateDisplay();
 });
+const audio = new Audio("./analog-timer-60-sec-2-startof-171599.mp3");
 
-closeButton.addEventListener('click', () => {
-    setting.classList.add('hidden');
-    start.classList.remove('hidden');
-
-});
-
-function updateDisplay() {
-    const min = Math.floor(timeLeft / 60);
-    const sec = timeLeft % 60;
-    minutes.textContent = min < 10 ? '0' + min : min;
-    seconds.textContent = sec < 10 ? '0' + sec : sec;
+function playSound() {
+    audio.play();
 }
 
-function toggleTimer() {
-    if (running) {
-        clearInterval(countdown);
-        running = false;
-        start.textContent = "START";
-    } else {
-        running = true;
-        start.textContent = "PAUSE";
-        countdown = setInterval(() => {
-            if (timeLeft > 0) {
-                timeLeft--;
+function startTimer() {
+    if (!isRunning) {
+        isRunning = true;
+        startButton.textContent = "STOP";
+        timer = setInterval(() => {
+            if (time > 0) {
+                time--;
                 updateDisplay();
             } else {
-                clearInterval(countdown);
-                running = false;
-                alert("Time's up!");
+                clearInterval(timer);
+                isRunning = false;
+                startButton.textContent = "START";
+                playSound(); // Ovoz ijro etish
             }
         }, 1000);
+    } else {
+        clearInterval(timer);
+        isRunning = false;
+        startButton.textContent = "START";
     }
 }
-function resetTimer() {
-    clearInterval(countdown);
-    running = false;
-    timeLeft = defaultTime;
-    updateDisplay();
-    start.textContent = "START";
-}
-
-function setTime(newTime, color) {
-    clearInterval(countdown);
-    running = false;
-    defaultTime = newTime;
-    timeLeft = defaultTime;
-    updateDisplay();
-    start.textContent = "START";
-    body.style.background = color;
-}
-
-red.addEventListener('click', () => setTime(25 * 60, '#d94d4d'));
-blue.addEventListener('click', () => setTime(5 * 60, '#1997cd'));
-green.addEventListener('click', () => setTime(15 * 60, '#2b904b'));
-start.addEventListener('click', toggleTimer);
-
-okButton.addEventListener('click', () => {
-    const pomodoroTime = parseInt(pomodoroInput.value) * 60 || 25 * 60;
-    const shortBreakTime = parseInt(shortBreakInput.value) * 60 || 5 * 60;
-    const longBreakTime = parseInt(longBreakInput.value) * 60 || 15 * 60;
-
-    red.addEventListener('click', () => setTime(pomodoroTime, '#d94d4d'));
-    blue.addEventListener('click', () => setTime(shortBreakTime, '#1997cd'));
-    green.addEventListener('click', () => setTime(longBreakTime, '#2b904b'));
-
-    setting.classList.add('hidden'); 
-    start.classList.remove('hidden'); 
-});
-

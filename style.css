@@ -3,9 +3,13 @@
     padding: 0;
     box-sizing: border-box;
 }
-body{
+
+body {
     background-color: #d94d4d;
+    transition: background-color 1s ease-in-out; 
+    
 }
+
 .section1{
     z-index: 10;
     position: relative;
@@ -97,12 +101,13 @@ span{
 }
 .setting{
     width: 400px;
-    height: 550.2px;
+    height: 600.2px;
     background-color: #fff;
     padding: 1rem 2rem;
     border-radius: 10px;
     z-index: 20;
     margin-top: -25rem;
+    transition: all 1s ease;
     margin-left: 7rem;
 }
 .p{
@@ -168,4 +173,8 @@ label{
     background-color: black;
     margin-top: 5rem;
     margin-left: 17rem;
+}
+.k{
+    display: flex;
+    margin-top: 1rem;
 }
