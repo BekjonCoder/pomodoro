@@ -125,30 +125,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateDisplay();
 });
-const audio = new Audio("./analog-timer-60-sec-2-startof-171599.mp3");
-
-function playSound() {
-    audio.play();
-}
-
-function startTimer() {
-    if (!isRunning) {
-        isRunning = true;
-        startButton.textContent = "STOP";
-        timer = setInterval(() => {
-            if (time > 0) {
-                time--;
-                updateDisplay();
-            } else {
-                clearInterval(timer);
-                isRunning = false;
-                startButton.textContent = "START";
-                playSound(); // Ovoz ijro etish
-            }
-        }, 1000);
-    } else {
-        clearInterval(timer);
-        isRunning = false;
-        startButton.textContent = "START";
-    }
-}
