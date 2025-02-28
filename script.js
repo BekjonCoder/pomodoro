@@ -13,11 +13,10 @@ document.addEventListener("DOMContentLoaded", () => {
     let time = 25 * 60;
     let timer;
     let isRunning = false;
-    let currentColor = "#d94d4d"; // Default rang (qizil)
+    let currentColor = "#d94d4d"; 
 
-    // Ovozlar
-    const startSound = new Audio("start.mp3"); // START tugmasi bosilganda
-    const endSound = new Audio("end.mp3"); // Vaqt tugaganda
+    const startSound = new Audio("start.mp3"); 
+    const endSound = new Audio("end.mp3"); 
 
     function updateDisplay() {
         let minutes = Math.floor(time / 60);
@@ -30,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!isRunning) {
             isRunning = true;
             startButton.textContent = "STOP";
-            startSound.play(); // START bosilganda ovoz chiqadi
+            startSound.play(); 
 
             timer = setInterval(() => {
                 if (time > 0) {
@@ -40,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     clearInterval(timer);
                     isRunning = false;
                     startButton.textContent = "START";
-                    endSound.play(); // Vaqt tugaganda ovoz chiqadi
+                    endSound.play();
                 }
             }, 1000);
         } else {
@@ -57,16 +56,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (mode === "pomodoro") {
             time = 25 * 60;
-            currentColor = "#d94d4d"; // Qizil
+            currentColor = "#d94d4d"; 
         } else if (mode === "short") {
             time = 5 * 60;
-            currentColor = "#4d79d9"; // Ko'k
+            currentColor = "#4d79d9";
         } else if (mode === "long") {
             time = 15 * 60;
-            currentColor = "#4dd98b"; // Yashil
+            currentColor = "#4dd98b"; 
         }
 
-        body.style.transition = "background-color 1s ease"; // Silliq o‘zgarish
+        body.style.transition = "background-color 1s ease";
         body.style.backgroundColor = currentColor;
         updateDisplay();
     }
@@ -84,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (input.checked) {
                 currentColor = input.getAttribute("data-color") === "red" ? "#d94d4d" :
                                input.getAttribute("data-color") === "blue" ? "#4d79d9" :
-                               "#4dd98b"; // Green
+                               "#4dd98b"; 
             }
         });
 
