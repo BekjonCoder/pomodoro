@@ -78,8 +78,6 @@ body {
     background: rgba(255, 255, 255, 0.3);
 }
 
-/* ----- TIMER DISPLAY ----- */
-
 span {
     display: flex;
     margin: 1rem auto;
@@ -89,7 +87,8 @@ span {
     font-weight: bold;
     margin-top: -0.1rem;
 }
- .start-btn {
+
+.start-btn {
     position: absolute;
     padding: 1rem 2rem;
     border: none;
@@ -184,23 +183,81 @@ span {
 
 .color-options label { margin-right: 1rem; }
 
-/* ----- RESPONSIVE ----- */
+/* ================================================================= */
+/* ======================== MEDIA QUERIES ========================== */
+/* ================================================================= */
 
-@media (max-width: 1024px) {
-    .section1 { width: 60%; }
-    .time { width: 100%; height: 400px; }
-}
+/* --------- TABLET : max-width 768px ----------- */
 @media (max-width: 768px) {
-    .section1 { width: 80%; }
-    .nav { flex-direction: column; align-items: center; }
-    .time { width: 100%; height: 320px; }
-    span { font-size: 5rem; }
-    .start { margin-left: 12rem; }
-}
-@media (max-width: 480px) {
-    .section1 { width: 90%; }
-    .time { width: 100%; height: 440px; }
-    span { font-size: 4rem; }
-    .start { width: 90%; margin-left: -0.8rem; padding: 1rem 0; }
+    .section1 {
+        width: 90%;
+        margin: 1rem auto;
+    }
+
+    .nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pom { font-size: 1.2rem; }
+
+    .bir {
+        margin: 0.5rem 0;
+    }
+
+    .time {
+        width: 90%;
+        height: auto;
+        padding: 1rem;
+    }
+
+    span {
+        font-size: 4rem;
+    }
+
+    .start-btn,
+    .reset-btn {
+        position: static;
+        margin: 0.5rem 0.5rem;
+        font-size: 1.2rem;
+        padding: 0.8rem 1rem;
+        display: inline-block;
+    }
 }
 
+/* --------- MOBILE : max-width 480px ----------- */
+@media (max-width: 480px) {
+    .section1 {
+        width: 95%;
+    }
+
+    .pom { font-size: 1rem; }
+
+    .bir, .btn {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.8rem;
+        margin-left: 0.2rem;
+    }
+
+    span {
+        font-size: 3rem;
+    }
+
+    .time {
+        width: 100%;
+        padding: 0.5rem;
+    }
+
+    .start-btn,
+    .reset-btn {
+        font-size: 1rem;
+        padding: 0.6rem 1rem;
+        border-radius: 0.5rem;
+        margin: 0.3rem;
+    }
+
+    .nav {
+        flex-direction: column;
+        align-items: center;
+    }
+}
