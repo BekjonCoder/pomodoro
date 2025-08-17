@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // DISPLAY ELEMENTS
   const minuteDisplay = document.getElementById("minute");
   const secondDisplay = document.getElementById("second");
   const startBtn = document.querySelector(".start-btn");
@@ -9,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const progressBar = document.querySelector(".progress-inner");
   const quoteText = document.getElementById("quote-text");
 
-  // MODALS & BUTTONS
   const settingsModal = document.querySelector(".settings-modal");
   const reportModal = document.querySelector(".report-modal");
   const loginModal = document.querySelector(".login-modal");
@@ -26,16 +24,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const saveLoginBtn = document.querySelector(".save-login-btn");
   const usernameInput = document.getElementById("username-input");
 
-  // INPUTS
   const pomodoroInput = document.getElementById("pomodoro-input");
   const shortInput = document.getElementById("short-input");
   const longInput = document.getElementById("long-input");
   const colorInputs = document.querySelectorAll("input[name='color']");
 
-  // REPORT text
   const reportText = document.getElementById("report-text");
 
-  // Quotes
   const quotes = [
     "Stay focused and keep going!",
     "You're doing great!",
@@ -75,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
           completedPomodoros++;
           totalWorkTime += defaultTime / 60;
           renderReport();
-          displayNewQuote(); // show new motivational quote
+          displayNewQuote();
           time = defaultTime;
           updateDisplay();
         }
@@ -183,7 +178,6 @@ document.addEventListener("DOMContentLoaded", () => {
       `<i class="fa-solid fa-circle-user"></i> ${savedUser}`;
   }
 
-  /* ------------------- EVENT LISTENERS -------------------- */
   startBtn.addEventListener("click", startTimer);
   resetBtn.addEventListener("click", resetTimer);
 
@@ -205,7 +199,6 @@ document.addEventListener("DOMContentLoaded", () => {
   closeLoginBtn.addEventListener("click", () => closeModal(loginModal));
   saveLoginBtn.addEventListener("click", saveLogin);
 
-  /* Initial */
   updateDisplay();
   displayNewQuote();
 });
