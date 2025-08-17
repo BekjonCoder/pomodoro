@@ -1,15 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // DISPLAY ELEMENTS
   const minuteDisplay = document.getElementById("minute");
   const secondDisplay = document.getElementById("second");
   const startBtn = document.querySelector(".start-btn");
   const resetBtn = document.querySelector(".reset-btn");
   const modeButtons = document.querySelectorAll(".mode-btn");
   const body = document.body;
+  const progressBar = document.querySelector(".progress-inner");
+  const quoteText = document.getElementById("quote-text");
 
-  // M O D A L S (new class names!)
+  // MODALS & BUTTONS
   const settingsModal = document.querySelector(".settings-modal");
   const reportModal = document.querySelector(".report-modal");
-  const loginModal   = document.querySelector(".login-modal");
+  const loginModal = document.querySelector(".login-modal");
 
   const openSettingsBtn = document.querySelector(".settings-open-btn");
   const closeSettingsBtn = document.querySelector(".close-settings");
@@ -32,6 +35,15 @@ document.addEventListener("DOMContentLoaded", () => {
   // REPORT text
   const reportText = document.getElementById("report-text");
 
+  // Quotes
+  const quotes = [
+    "Stay focused and keep going!",
+    "You're doing great!",
+    "One step at a time.",
+    "Keep pushing forward!",
+    "Small progress is still progress."
+  ];
+
   let time = 25 * 60;
   let timer;
   let isRunning = false;
@@ -45,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const seconds = time % 60;
     minuteDisplay.textContent = String(minutes).padStart(2, "0");
     secondDisplay.textContent = String(seconds).padStart(2, "0");
+    updateProgressBar();
   }
 
   function startTimer() {
@@ -59,10 +72,10 @@ document.addEventListener("DOMContentLoaded", () => {
           clearInterval(timer);
           isRunning = false;
           startBtn.textContent = "START";
-
           completedPomodoros++;
           totalWorkTime += defaultTime / 60;
           renderReport();
+          displayNewQuote(); // show new motivational quote
           time = defaultTime;
           updateDisplay();
         }
@@ -72,6 +85,17 @@ document.addEventListener("DOMContentLoaded", () => {
       isRunning = false;
       startBtn.textContent = "START";
     }
+  }
+
+  function updateProgressBar() {
+    if (defaultTime === 0) return;
+    const percent = ((defaultTime - time) / defaultTime) * 100;
+    progressBar.style.width = `${percent}%`;
+  }
+
+  function displayNewQuote() {
+    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    quoteText.textContent = randomQuote;
   }
 
   function changeMode(mode) {
@@ -84,16 +108,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (mode === "pomodoro") {
       defaultTime = 25 * 60;
-      body.style.backgroundColor = "#d94d4d";
+      body.style.background = "linear-gradient(135deg, #d94d4d, #ff5757)";
     } else if (mode === "short") {
       defaultTime = 5 * 60;
-      body.style.backgroundColor = "#4d79d9";
+      body.style.background = "linear-gradient(135deg, #4d79d9, #6d95ff)";
     } else {
       defaultTime = 15 * 60;
-      body.style.backgroundColor = "#4dd98b";
+      body.style.background = "linear-gradient(135deg, #4dd98b, #6ff5af)";
     }
     time = defaultTime;
     updateDisplay();
+    progressBar.style.width = "0%";
   }
 
   function resetTimer() {
@@ -102,6 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
     time = defaultTime;
     startBtn.textContent = "START";
     updateDisplay();
+    progressBar.style.width = "0%";
   }
 
   function openModal(modal) {
@@ -122,13 +148,14 @@ document.addEventListener("DOMContentLoaded", () => {
     colorInputs.forEach((input) => {
       if (input.checked) {
         let color = input.getAttribute("data-color");
-        if (color === "red") body.style.backgroundColor = "#d94d4d";
-        if (color === "blue") body.style.backgroundColor = "#4d79d9";
-        if (color === "green") body.style.backgroundColor = "#4dd98b";
+        if (color === "red") body.style.background = "linear-gradient(135deg, #d94d4d, #ff5757)";
+        if (color === "blue") body.style.background = "linear-gradient(135deg, #4d79d9, #6d95ff)";
+        if (color === "green") body.style.background = "linear-gradient(135deg, #4dd98b, #6ff5af)";
       }
     });
     time = defaultTime;
     updateDisplay();
+    progressBar.style.width = "0%";
     closeModal(settingsModal);
   }
 
@@ -136,8 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (completedPomodoros === 0) {
       reportText.textContent = "No sessions completed yet.";
     } else {
-      reportText.textContent =
-        `Pomodoros completed: ${completedPomodoros}\nTotal work time: ${totalWorkTime} minutes`;
+      reportText.textContent = `Pomodoros completed: ${completedPomodoros}\nTotal work time: ${totalWorkTime} minutes`;
     }
   }
 
@@ -157,9 +183,10 @@ document.addEventListener("DOMContentLoaded", () => {
       `<i class="fa-solid fa-circle-user"></i> ${savedUser}`;
   }
 
-  // Event listeners
+  /* ------------------- EVENT LISTENERS -------------------- */
   startBtn.addEventListener("click", startTimer);
   resetBtn.addEventListener("click", resetTimer);
+
   modeButtons.forEach(btn => {
     btn.addEventListener("click", () => {
       const mode = btn.id.split("-")[0];
@@ -178,5 +205,7 @@ document.addEventListener("DOMContentLoaded", () => {
   closeLoginBtn.addEventListener("click", () => closeModal(loginModal));
   saveLoginBtn.addEventListener("click", saveLogin);
 
+  /* Initial */
   updateDisplay();
+  displayNewQuote();
 });
