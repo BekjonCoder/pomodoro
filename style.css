@@ -6,14 +6,15 @@
 
 body {
     background-color: #d94d4d;
-    transition: background-color 1s ease-in-out; 
+    transition: background-color 1s ease-in-out;
 }
+
+/* ----- NAVBAR & MAIN LAYOUT ----- */
 
 .section1 {
     z-index: 10;
     position: relative;
     width: 40%;
-    height: auto;
     margin: 1.5rem auto;
 }
 
@@ -22,9 +23,7 @@ body {
     justify-content: space-between;
 }
 
-.pom1 {
-    cursor: pointer;
-}
+.pom1 { cursor: pointer; }
 
 .pom {
     color: #fff;
@@ -36,7 +35,7 @@ body {
 .bir {
     background: rgba(255, 255, 255, 0.1);
     cursor: pointer;
-    border: none;   
+    border: none;
     padding: 0.7rem 1rem;
     border-radius: .25rem;
     color: #fff;
@@ -52,35 +51,34 @@ body {
     margin: 10px 0;
 }
 
-button {
-    cursor: pointer;
-    z-index: 10;
-}
-
 .time {
     width: 480px;
     margin: 2rem auto;
     height: 312px;
     border-radius: 1rem;
-    padding:  1rem 2rem;
+    padding: 1rem 2rem;
     background: rgba(255, 255, 255, 0.1);
 }
+
+/* ----- BUTTON group / modes ----- */
 
 .btn {
     background: rgba(255, 255, 255, 0.1);
-    cursor: pointer;
-    border: none;   
+    border: none;
     padding: 0.7rem 1rem;
-    border-radius: .25rem;
     color: #fff;
     font-size: 1rem;
-    font-weight: bold;
-    margin: 0 auto;
+    border-radius: .25rem;
+    margin-left: 1rem;
+    cursor: pointer;
 }
 
-.rem {
-    margin-left: 1rem;
+.mode-btn.active {
+    border: 2px solid #fff;
+    background: rgba(255, 255, 255, 0.3);
 }
+
+/* ----- TIMER DISPLAY ----- */
 
 span {
     display: flex;
@@ -91,278 +89,46 @@ span {
     font-weight: bold;
     margin-top: -0.1rem;
 }
-
-.start {
+ .start-btn {
     position: absolute;
     padding: 1rem 2rem;
     border: none;
     border-radius: 10px;
-    color: #d94d4d;
     font-size: 2rem;
-    margin-top: -0.5rem;
+    color: #d94d4d;
     margin-left: 7rem;
+    cursor: pointer;
 }
 
-.set {
-    display: flex;
-    justify-content: space-between;
-}
-
-.setting {
-    width: 400px;
-    height: 600.2px;
-    background-color: #fff;
-    padding: 1rem 2rem;
+.reset-btn {
+    position: absolute;
+    padding: 1.35rem 0.5rem;
+    border: none;
     border-radius: 10px;
-    z-index: 20;
-    margin-top: -25rem;
-    transition: all 1s ease;
-    margin-left: 7rem;
+    font-size: 2rem;
+    color: #d94d4d;
+    margin-left: 18rem;
+    font-size: 20px;
+    cursor: pointer;
 }
 
-.p {
-    margin-top: 1rem;
-}
+/* ----- MODAL STYLES ----- */
 
-.d {
-    display: flex;
-    margin-top: 1rem;
-}
-
-input {
-    padding: 1rem;
-    outline: none;
-    width: 98px;
-    height: 43.2px;
-    margin-right: 1rem;
-    border-radius: 10px;
-}
-
-option {
-    border-radius: 10px;
-}
-
-label {
-    color: rgb(159, 156, 156);
-}
-
-.check {
-    margin-top: 2rem;
-    display: flex;
-    justify-content: space-between;
-}
-
-.check input {
-    width: 20px;
-    height: 20px;
-}
-
-.check1 {
-    display: flex;
-    margin-top: 2rem;
-    width: 100%;
-    justify-content: space-around;
-}
-
-.b {
-    margin-right: 5rem;
-}
-
-.birnarsa {
-    margin-top: 2rem;
-    display: flex;
-    justify-content: space-between;
-    width: 95%;
-}
-
-#esc {
-    width: 20px;
-    height: 20px;
-}
-
-.hidden {
-    display: none;
-}
-
-#ok {
-    width: 60px;
-    height: 30px;
-    color: white;
-    background-color: black;
-    margin-top: 5rem;
-    margin-left: 17rem;
-}
-
-.k {
-    display: flex;
-    margin-top: 1rem;
-}
-
-@media (max-width: 1024px) {
-    .section1 {
-        width: 60%;
-    }
-
-    .time {
-        width: 100%;
-        height: 400px;
-    }
-
-    
-
-    .setting {
-        width: 80%;
-        margin-left: 10%;
-        margin-top: -10rem;
-    }
-
-    .birnarsa {
-        display: block;
-        margin-top: 1rem;
-    }
-
-    .k {
-        flex-direction: column;
-        align-items: center;
-    }
-}
-@media (max-width: 768px) {
-    .section1 {
-        width: 80%;
-    }
-
-    .nav {
-        flex-direction: column;
-        align-items: center;
-    }
-    .button{
-        margin-left: 4rem;
-    }
-    .button button{
-        padding: 1rem;
-        margin-left: 1rem;
-    }
-
-    .pom {
-        font-size: 1.2rem;
-    }
-
-    .bir {
-        font-size: 0.9rem;
-        padding: 0.6rem 0.8rem;
-    }
-
-    .time {
-        width: 100%;
-        height: 320px;
-        margin-top: 1rem;
-    }
-
-    .btn {
-        font-size: 0.9rem;
-        padding: 0.6rem 0.8rem;
-        margin: 0.5rem 0;
-    }
-
-    span {
-        font-size: 5rem;
-        margin-top: 1rem;
-    }
-
-    .start {
-        margin-left: 12rem;
-    }
-
-    .setting {
-        width: 90%;
-        margin-left: 5%;
-        margin-top: -10rem;
-    }
-
-    .check1 {
-        flex-direction: column;
-    }
-
-    .check {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #ok {
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
-
-@media (max-width: 480px) {
-    .section1 {
-        width: 90%;
-        
-    }
-
-    .time {
-        width: 100%;
-        height: 440px;
-
-        
-    }
-
-    .btn {
-        width: 100%;
-        padding: 0.8rem;
-        font-size: 1rem;
-    }
-
-    span {
-        font-size: 4rem;
-    }
-
-    .start {
-        width: 90%;
-        margin-left: -0.8rem;
-        padding: 1rem 0;
-    }
-    .button{
-        margin-left: -2rem;
-    }
-    .setting {
-        width: 100%;
-        margin-left: 0;
-        margin-top: -5rem;
-    }
-
-    .check1 {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .birnarsa {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #ok {
-        margin-top: 2rem;
-    }
-
-    .k {
-        flex-direction: column;
-        align-items: center;
-    }
-}
-
-/* MODALS uchun universal style */
 .modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0,0,0,0.5);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 999;
+}
+
+.modal.hidden {
+    display: none !important;
 }
 
 .modal-content {
@@ -382,9 +148,7 @@ label {
     margin-bottom: 1rem;
 }
 
-.modal-header h2 {
-    font-size: 1.2rem;
-}
+.modal-header h2 { font-size: 1.2rem; }
 
 .modal-header button {
     background: none;
@@ -393,7 +157,6 @@ label {
     cursor: pointer;
 }
 
-/* login va settings input uchun */
 .modal-content input {
     width: 100%;
     padding: 0.7rem;
@@ -403,7 +166,6 @@ label {
     outline: none;
 }
 
-/* save buttonlar */
 .save-settings-btn,
 .save-login-btn {
     width: 100%;
@@ -416,10 +178,29 @@ label {
     cursor: pointer;
 }
 
-/* Color radio labels */
 .color-options {
     margin: 1rem 0;
 }
-.color-options label {
-    margin-right: 1rem;
+
+.color-options label { margin-right: 1rem; }
+
+/* ----- RESPONSIVE ----- */
+
+@media (max-width: 1024px) {
+    .section1 { width: 60%; }
+    .time { width: 100%; height: 400px; }
 }
+@media (max-width: 768px) {
+    .section1 { width: 80%; }
+    .nav { flex-direction: column; align-items: center; }
+    .time { width: 100%; height: 320px; }
+    span { font-size: 5rem; }
+    .start { margin-left: 12rem; }
+}
+@media (max-width: 480px) {
+    .section1 { width: 90%; }
+    .time { width: 100%; height: 440px; }
+    span { font-size: 4rem; }
+    .start { width: 90%; margin-left: -0.8rem; padding: 1rem 0; }
+}
+

@@ -10,7 +10,8 @@
 <body>
 
 <section class="section1">
-    <!-- Nav -->
+
+    <!-- NAV -->
     <div class="nav">
         <div class="pom1">
             <i class="pom fa-solid fa-circle-check"></i>
@@ -25,7 +26,7 @@
 
     <div class="hr"></div>
 
-    <!-- Timer -->
+    <!-- TIMER BOX -->
     <div class="time">
         <div class="button">
             <button class="btn rem mode-btn active" id="pomodoro-mode">Pomodoro</button>
@@ -33,27 +34,37 @@
             <button class="btn rem mode-btn" id="long-mode">Long Break</button>
         </div>
         <span><span id="minute">25</span>:<span id="second">00</span></span>
-        <button class="start start-btn">START</button>
-        <button class="start reset-btn" style="margin-top:3rem;">RESET</button>
+            <button class="start start-btn">START</button>
+        <button class="start reset-btn">RESET</button>
     </div>
+
 </section>
 
-<!-- SETTINGS MODAL (outside of section) -->
+<!-- SETTINGS MODAL -->
 <div class="modal settings-modal hidden">
   <div class="modal-content">
-     <div class="modal-header">
-        <h2>Timer Settings</h2>
-        <button class="close-settings">&times;</button>
-     </div>
-    <label>Pomodoro Minutes <input type="number" id="pomodoro-input" placeholder="25"></label>
-    <label>Short Break <input type="number" id="short-input" placeholder="5"></label>
-    <label>Long Break <input type="number" id="long-input" placeholder="15"></label>
+    <div class="modal-header">
+      <h2>Timer Settings</h2>
+      <button class="close-settings">&times;</button>
+    </div>
+
+    <label>Pomodoro Minutes
+      <input type="number" id="pomodoro-input" placeholder="25" />
+    </label>
+
+    <label>Short Break
+      <input type="number" id="short-input" placeholder="5" />
+    </label>
+
+    <label>Long Break
+      <input type="number" id="long-input" placeholder="15" />
+    </label>
 
     <div class="color-options">
-        <p>Background Color:</p>
-        <label><input type="radio" name="color" data-color="red" checked> Red</label>
-        <label><input type="radio" name="color" data-color="blue"> Blue</label>
-        <label><input type="radio" name="color" data-color="green"> Green</label>
+      <p>Background Color:</p>
+      <label><input type="radio" name="color" data-color="red" checked> Red</label>
+      <label><input type="radio" name="color" data-color="blue"> Blue</label>
+      <label><input type="radio" name="color" data-color="green"> Green</label>
     </div>
 
     <button class="save-settings-btn">Save</button>
@@ -63,10 +74,10 @@
 <!-- REPORT MODAL -->
 <div class="modal report-modal hidden">
   <div class="modal-content">
-     <div class="modal-header">
-        <h2>Daily Report</h2>
-        <button class="close-report">&times;</button>
-     </div>
+    <div class="modal-header">
+      <h2>Daily Report</h2>
+      <button class="close-report">&times;</button>
+    </div>
     <p id="report-text">No sessions completed yet.</p>
   </div>
 </div>
@@ -78,7 +89,9 @@
       <h2>Login</h2>
       <button class="close-login">&times;</button>
     </div>
-    <label>Your Name <input type="text" id="username-input"></label>
+    <label>Your Name
+      <input type="text" id="username-input" />
+    </label>
     <button class="save-login-btn">Save</button>
   </div>
 </div>
