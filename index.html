@@ -3,91 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Pomodoro</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
+
 <section class="section1">
+    <!-- Nav -->
     <div class="nav">
         <div class="pom1">
             <i class="pom fa-solid fa-circle-check"></i>
             <a href="#" class="pom">Pomofocus</a>
-    
         </div>
         <div>
-            <button class="bir"><i class="  fa-solid fa-square-poll-vertical"></i>    Report</button>
-            <button class="bir1 bir"><i class="fa-solid fa-gear"></i>   Setting</button>
-            <button class="bir"><i class="fa-solid fa-circle-user"></i>    Login</button>
-            
+            <button class="bir report-btn"><i class="fa-solid fa-square-poll-vertical"></i> Report</button>
+            <button class="bir settings-open-btn"><i class="fa-solid fa-gear"></i> Settings</button>
+            <button class="bir login-btn"><i class="fa-solid fa-circle-user"></i> Login</button>
         </div>
-    
     </div>
 
     <div class="hr"></div>
+
+    <!-- Timer -->
     <div class="time">
         <div class="button">
-            <button class="btn rem" id="red">Pomodoro</button>
-            <button class="btn rem" id="blue">Short Break</button>
-            <button class="btn rem" id="green">Long Break</button>
+            <button class="btn rem mode-btn active" id="pomodoro-mode">Pomodoro</button>
+            <button class="btn rem mode-btn" id="short-mode">Short Break</button>
+            <button class="btn rem mode-btn" id="long-mode">Long Break</button>
         </div>
         <span><span id="minute">25</span>:<span id="second">00</span></span>
-        <button class="start">START</button>
+        <button class="start start-btn">START</button>
+        <button class="start reset-btn" style="margin-top:3rem;">RESET</button>
     </div>
-    <div class="setting hidden ">
-        <div class="set"><h1>Timer Settings</h1><button id="esc"><i class="icon fa-brands fa-square-x-twitter"></i></button></div>
-        <p class="p">Time (minutes)</p>
-        <div class="d">
-            <div class="f">
-                <label for="pomodoro">Pomodoro</label>
-            <input type="number" placeholder="25" id="pomodoro">
-            </div>
-            <div class="f">
-                <label for="short">Short Break</label>
-            <input type="number" placeholder="5" id="short">
-            </div>
-            <div class="f">
-                <label for="long">Long Break</label>
-            <input type="number" placeholder="15" id="long">
-            </div>
-        </div>
-        <div class="check">
-            <label for="check">Auto start breaks</label>
-            <input type="checkbox"  id="check">
-        </div>
-        <div class="check">
-            <label for="check">Auto start Pomodoros?</label>
-            <input type="checkbox"  id="check">
-        </div>
-        <div class="check1">
-            <label for="check" class="b">Long Break interval</label>
-            <input type="number" class="a" id="check">
-        </div>
-        <div class="birnarsa">
-            <label for="duration">Select Timer Duration:</label>
-    <select>
-    <option value="duration">Duration</option>
-    <option value='bell'>Bell</option>
-    </select>
-    
-    
-        </div>
-        <div class="k">
-            <label>
-                <input type="radio" name="color" data-color="red"> Red
-            </label>
-            <label>
-                <input type="radio" name="color" data-color="blue"> Blue
-            </label>
-            <label>
-                <input type="radio" name="color" data-color="green"> Green
-            </label>
-        </div>
-        <button id="ok">OK</button>
-    </div>
-    
 </section>
 
-    <script src="./script.js"></script>
+<!-- SETTINGS MODAL (outside of section) -->
+<div class="modal settings-modal hidden">
+  <div class="modal-content">
+     <div class="modal-header">
+        <h2>Timer Settings</h2>
+        <button class="close-settings">&times;</button>
+     </div>
+    <label>Pomodoro Minutes <input type="number" id="pomodoro-input" placeholder="25"></label>
+    <label>Short Break <input type="number" id="short-input" placeholder="5"></label>
+    <label>Long Break <input type="number" id="long-input" placeholder="15"></label>
+
+    <div class="color-options">
+        <p>Background Color:</p>
+        <label><input type="radio" name="color" data-color="red" checked> Red</label>
+        <label><input type="radio" name="color" data-color="blue"> Blue</label>
+        <label><input type="radio" name="color" data-color="green"> Green</label>
+    </div>
+
+    <button class="save-settings-btn">Save</button>
+  </div>
+</div>
+
+<!-- REPORT MODAL -->
+<div class="modal report-modal hidden">
+  <div class="modal-content">
+     <div class="modal-header">
+        <h2>Daily Report</h2>
+        <button class="close-report">&times;</button>
+     </div>
+    <p id="report-text">No sessions completed yet.</p>
+  </div>
+</div>
+
+<!-- LOGIN MODAL -->
+<div class="modal login-modal hidden">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Login</h2>
+      <button class="close-login">&times;</button>
+    </div>
+    <label>Your Name <input type="text" id="username-input"></label>
+    <button class="save-login-btn">Save</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
